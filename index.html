@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Arrancando con D3
+## Miguel Trias <miguel@vividcortex.com>
+
+---
+
+class: center, middle
+
+<img src="vividcortex.svg" />
+
+<br>
+
+<p>https://vividcortex.com/</p>
+<p>Monitoreo de Performance de BBDD</p>
+
+---
+
+# Agenda
+
+1. Introduction
+2. SVG
+3. Visualizaciones "a mano"
+4. d3
+5. ???
+
+- Requerimientos: un poco de HTML, CSS y Javascript
+- Codigo disponible ???
+
+---
+
+class: center, middle
+# SVG
+
+Scalable Vector Graphics
+
+<blockquote>
+    Is an <strong>XML-based</strong> vector image format for <strong>two-dimensional graphics</strong> with support for <strong>interactivity and animation</strong>.
+    The SVG specification is an open standard developed by the World Wide Web Consortium (W3C) since 1999.
+</blockquote>
+
+<footer>
+    https://en.wikipedia.org/wiki/Scalable_Vector_Graphics
+</footer>
+
+---
+
+class: inverse
+
+# Parecido a HTML
+
+- tiene <nodos con="atributos">
+- API DOM
+- eventos
+- CSS
+- No requiere plugins
+
+---
+
+# Rectangulo v1
+
+```html
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="250" height="200">
+    <rect
+        x="25"
+        y="25"
+        width="100"
+        height="100"
+        fill="indigo"
+        stroke-width="8"
+        stroke="gray"
+    />
+</svg>
+```
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="250" height="200">
+    <rect
+        x="25"
+        y="25"
+        width="100"
+        height="100"
+        fill="indigo"
+        stroke-width="8"
+        stroke="gray"
+    />
+</svg>
+
+---
+
+class: middle, center
+# Buenas Practicas
+
+<p>Atributos = Geometria</p>
+<p>CSS = Estilos</p>
+
+---
+
+# Rectangulo v2
+
+```html
+<svg width="250" height="200">
+    <rect
+        x="25"
+        y="25"
+        width="100"
+        height="100"
+    />
+</svg>
+```
+
+```css
+rect {
+    fill="indigo"
+    stroke-width="8"
+    stroke="gray"
+}
+```
+
+<style>
+    rect#svg-r2 {
+        fill: indigo;
+        stroke-width: 8;
+        stroke: gray;
+    }
+</style>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="250" height="200">
+    <rect
+        id="svg-r2"
+        x="25"
+        y="25"
+        width="100"
+        height="100"
+    />
+</svg>
+
+---
+
+# Mas Ejemplos
+
+```html
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="250" height="200">
+  <circle cx="125" cy="125" r="75" fill="orange" />
+  <polyline points="50,150 50,200 200,200 200,100" stroke="red" stroke-width="4" fill="none" />
+  <line x1="50" y1="50" x2="200" y2="200" stroke="blue" stroke-width="4" />
+</svg>
+```
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="250" height="200">
+  <circle cx="125" cy="125" r="75" fill="orange" />
+  <polyline points="50,150 50,200 200,200 200,100" stroke="red" stroke-width="4" fill="none" />
+  <line x1="50" y1="50" x2="200" y2="200" stroke="blue" stroke-width="4" />
+</svg>
+
+---
+
+# Sistema de Coordenadas
+
+<svg height="480" width="100%" style="position: absolute; left: 50px; top: 130px;">
+    <defs>
+        <marker id="markerArrow" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto" markerUnits="strokeWidth">
+           <path d="M2,2 L2,7 L7,4.5 L2,2" />
+        </marker>
+    </defs>
+    <line x1="20" y1="20" x2="20" y2="400" style="marker-end: url(#markerArrow)" />
+    <line x1="20" y1="20" x2="600" y2="20" style="marker-end: url(#markerArrow)" />
+</svg>
+
+```html
+<svg height="400" width="100%">
+    <defs>
+        <marker id="markerArrow"
+            markerWidth="9" markerHeight="9" markerUnits="strokeWidth"
+            refX="2" refY="4.5"
+            orient="auto"
+        >
+           <path d="M2,2 L2,7 L7,4.5 L2,2" />
+        </marker>
+    </defs>
+
+    <line x1="20" y1="20" x2="20" y2="350" class="flecha" />
+    <line x1="20" y1="20" x2="600" y2="20" class="flecha" />
+</svg>
+```
+
+```css
+svg .flecha {
+    marker-end: url(#markerArrow);
+}
+```
+---
+
+# Mas SVG
+
+http://tutorials.jenkov.com/svg/index.html
+
+---
+
+class: center, middle
+# SVG + JS
+
+---
+
+class: center, middle
+# SVG + D3
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
