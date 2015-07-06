@@ -7,12 +7,12 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Yanone Kaffeesatz';
+  font-family: 'Droid Serif';
   font-weight: normal;
 }
 
 .remark-slide-content h1 {
-    font-size: 100px;
+    font-size: 60px;
     margin: 30px 0;
 }
 
@@ -28,6 +28,15 @@ blockquote {
     padding: 1em;
     line-height: 1.4em;
     background-color: #f0f0f0;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
 }
 
 footer {
