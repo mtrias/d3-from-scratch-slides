@@ -52,6 +52,11 @@ strong: {
     font-family: 'Ubuntu Mono';
 }
 
+svg {
+     width: 100%;
+     height: 200;
+}
+
 svg line {
     stroke: #02bad1;
     stroke-width: 8;
