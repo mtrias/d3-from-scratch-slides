@@ -13,10 +13,6 @@ class: inverse, center, middle
 # Introducción a D3
 Miguel Trias `<miguel@vividcortex.com>`
 
-<footer>
-    https://github.com/mtrias/d3-intro
-</footer>
-
 ---
 
 class: inverse, center, middle
@@ -37,10 +33,11 @@ class: inverse
 2. SVG
 3. Visualizaciones "a mano"
 4. d3
-5. ???
 
-- Requerimientos: un poco de HTML, CSS y Javascript
-- Codigo disponible ???
+<br>
+
+- Pre-Requisitos: un poco de HTML, CSS y Javascript
+- Diapositivas: `https://github.com/mtrias/d3-intro`
 
 ---
 
@@ -65,9 +62,10 @@ Scalable Vector Graphics
 
 ---
 
-# Parecido a HTML
+# Se lleva bien con HTML
 
-- tiene `<nodos con="atributos">`
+- Se puede embeber en HTML
+- Misma sintaxis. (`<nodos con="atributos">`)
 - API DOM
 - eventos
 - CSS
@@ -157,16 +155,28 @@ rect {
 
 ```html
 <svg>
-  <circle cx="125" cy="125" r="75" fill="orange" />
-  <polyline points="50,150 50,200 200,200 200,100" stroke="red" stroke-width="4" fill="none" />
-  <line x1="50" y1="50" x2="200" y2="200" stroke="blue" stroke-width="4" />
+    <circle
+        cx="125" cy="125" r="67"
+        fill="orange"
+    />
+
+    <polyline
+        points="4,100 4,150 150,150 150,50"
+        stroke="red" fill="none"
+    />
+
+    <line
+        x1="50" y1="50"
+        x2="150" y2="150"
+        stroke="blue" stroke-width="4"
+    />
 </svg>
 ```
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="300">
-  <circle cx="125" cy="125" r="75" fill="orange" />
-  <polyline points="50,150 50,200 200,200 200,100" stroke="red" stroke-width="4" fill="none" />
-  <line x1="50" y1="50" x2="200" y2="200" stroke="blue" stroke-width="4" />
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="200">
+  <circle cx="75" cy="75" r="67" fill="orange" />
+  <polyline points="4,100 4,150 150,150 150,50" style="stroke:red" fill="none" />
+  <line x1="50" y1="50" x2="150" y2="150" style="stroke:blue" />
 </svg>
 
 ---
@@ -179,12 +189,12 @@ rect {
            <path d="M2,2 L2,7 L7,4.5 L2,2" />
         </marker>
     </defs>
-    <line x1="20" y1="20" x2="20" y2="400" style="marker-end: url(#markerArrow)" />
-    <line x1="20" y1="20" x2="600" y2="20" style="marker-end: url(#markerArrow)" />
+    <line x1="20" y1="20" x2="20"  y2="400" style="marker-end: url(#markerArrow)" />
+    <line x1="20" y1="20" x2="600" y2="20"  style="marker-end: url(#markerArrow)" />
 </svg>
 
 ```html
-<svg height="400">
+<svg height="480">
     <defs>
         <marker id="markerArrow"
             markerWidth="9" markerHeight="9" markerUnits="strokeWidth"
@@ -195,8 +205,8 @@ rect {
         </marker>
     </defs>
 
-    <line x1="20" y1="20" x2="20" y2="350" class="flecha" />
-    <line x1="20" y1="20" x2="600" y2="20" class="flecha" />
+    <line x1="20" y1="20" x2="20"  y2="350" class="flecha" />
+    <line x1="20" y1="20" x2="600" y2="20"  class="flecha" />
 </svg>
 ```
 
@@ -208,6 +218,22 @@ svg .flecha {
 ---
 
 # No hay z-index
+```svg
+<svg>
+    <circle cx="100" cy="100" r="95" fill="orange" />
+    <circle cx="200" cy="100" r="95" fill="indigo" />
+
+    <circle cx="600" cy="100" r="95" fill="indigo" />
+    <circle cx="500" cy="100" r="95" fill="orange" />
+</svg>
+```
+<svg height="250" width="250">
+    <circle cx="100" cy="100" r="95" fill="orange" />
+    <circle cx="200" cy="100" r="95" fill="indigo" />
+
+    <circle cx="600" cy="100" r="95" fill="indigo" />
+    <circle cx="500" cy="100" r="95" fill="orange" />
+</svg>
 
 ---
 
@@ -217,8 +243,94 @@ http://tutorials.jenkov.com/svg/index.html
 
 ---
 
-class: center, middle
-# SVG + JS
+# Tiempo de Trollear
+
+```svg
+<svg height="600" width="600">
+    <circle cx="210" cy="210" r="210" class="no-stroke js" />
+    <circle cx="210" cy="210" r="50"  class="no-stroke php" />
+    <circle cx="210" cy="210" r="10"  class="no-stroke ruby" />
+
+    <rect x="440" y="155" width="25" height="25" class="no-stroke js" />
+    <rect x="440" y="185" width="25" height="25" class="no-stroke php" />
+    <rect x="440" y="215" width="25" height="25" class="no-stroke ruby" />
+
+    <text x="470" y="175">Javascript</text>
+    <text x="470" y="205">Php</text>
+    <text x="470" y="235">Ruby</text>
+</svg>
+```
+<svg height="600" width="600">
+    <circle cx="210" cy="210" r="210" class="no-stroke js" />
+    <circle cx="210" cy="210" r="50"  class="no-stroke php" />
+    <circle cx="210" cy="210" r="10"  class="no-stroke ruby" />
+
+    <rect x="440" y="155" width="25" height="25" class="no-stroke js" />
+    <rect x="440" y="185" width="25" height="25" class="no-stroke php" />
+    <rect x="440" y="215" width="25" height="25" class="no-stroke ruby" />
+
+    <text x="470" y="175">Javascript</text>
+    <text x="470" y="205">Php</text>
+    <text x="470" y="235">Ruby</text>
+</svg>
+
+???
+- Coordenadas y Clases repetidas
+- Mantenimiento complicado
+- Posicionamiento complicado
+
+---
+
+# `<G>`
+
+- Agrupar objetos
+- Transformaciones aplicadas al `g` son heredadas por los hijos
+- Conveniente para estilos
+- Reciclar composiciones mediante `<use>`
+
+<svg>
+    <g fill="orange" transform="skewX(10)">
+        <rect x="0"   y="25" width="55" height="55" />
+        <rect x="80"  y="25" width="55" height="55" />
+        <rect x="160" y="25" width="55" height="55" />
+    </g>
+</svg>
+
+---
+
+# `<G>` Un poco mejor
+
+```svg
+<svg>
+    <g>
+        <circle cx="210" cy="210" r="210" class="js" />
+        <circle cx="210" cy="210" r="50"  class="php" />
+        <circle cx="210" cy="210" r="10"  class="ruby" />
+    </g>
+    <g transform="translate(440)">
+        <g>
+            <rect y="155" width="25" height="25" class="js" />
+            <rect y="185" width="25" height="25" class="php" />
+            <rect y="215" width="25" height="25" class="ruby" />
+        </g>
+        <g transform="translate(40)">
+            <text y="175">Javascript</text>
+            <text y="205">Php</text>
+            <text y="235">Ruby</text>
+        </g>
+    </g>
+</svg>
+```
+
+???
+- transform
+- segundo "transform" es relativo al primero
+
+---
+
+class: inverse, center, middle
+
+<img src="hate.png" />
 
 ---
 

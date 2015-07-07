@@ -74,11 +74,23 @@ svg {
      height: 200;
 }
 
-svg line {
-    stroke: #02bad1;
+svg line, svg polyline, svg circle, svg g {
+    stroke: gray;
     stroke-width: 8;
+}
+
+svg text {
+    stroke-width: 0;
+}
+
+svg .no-stroke, svg .no-stroke line, svg .no-stroke circle {
+    stroke-width: 0;
 }
 
 svg .flecha {
     marker-end: url(#markerArrow);
 }
+
+.js { fill: #e5bb31; }
+.php { fill: #4F5B93; }
+.ruby { fill: #CC342D; }
