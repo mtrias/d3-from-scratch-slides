@@ -94,3 +94,6 @@ svg .flecha {
 .js { fill: #e5bb31; }
 .php { fill: #4F5B93; }
 .ruby { fill: #CC342D; }
+
+.no-fill { fill: none; }
+.stroke-php { stroke: #4F5B93; }
