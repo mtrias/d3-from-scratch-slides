@@ -335,38 +335,36 @@ svg .flecha {
     marker-end: url(#markerArrow);
 }
 ```
+
+
 ---
+
 
 # No hay z-index
-```svg
-<svg>
-    <circle cx="100" cy="100" r="95" fill="orange" />
-    <circle cx="200" cy="100" r="95" fill="indigo" />
 
-    <circle cx="600" cy="100" r="95" fill="indigo" />
-    <circle cx="500" cy="100" r="95" fill="orange" />
-</svg>
+```svg
+<circle cx="100" cy="150" r="95" fill="orange" />
+<circle cx="200" cy="150" r="95" fill="indigo" />
+
+<circle cx="600" cy="150" r="95" fill="indigo" />
+<circle cx="500" cy="150" r="95" fill="orange" />
 ```
-<svg height="250" width="250">
-    <circle cx="100" cy="100" r="95" fill="orange" />
-    <circle cx="200" cy="100" r="95" fill="indigo" />
 
-    <circle cx="600" cy="100" r="95" fill="indigo" />
-    <circle cx="500" cy="100" r="95" fill="orange" />
+<svg height="300" width="250">
+    <circle cx="100" cy="150" r="95" fill="orange" />
+    <circle cx="200" cy="150" r="95" fill="indigo" />
+
+    <circle cx="600" cy="150" r="95" fill="indigo" />
+    <circle cx="500" cy="150" r="95" fill="orange" />
 </svg>
 
----
-
-# Más SVG
-
-http://tutorials.jenkov.com/svg/index.html
 
 ---
 
-# Tiempo de Trollear
 
-```svg
-<svg height="600" width="600">
+# Ejercicio
+
+<svg height="470" width="600">
     <circle cx="210" cy="210" r="210" class="no-stroke js" />
     <circle cx="210" cy="210" r="50"  class="no-stroke php" />
     <circle cx="210" cy="210" r="10"  class="no-stroke ruby" />
@@ -379,7 +377,25 @@ http://tutorials.jenkov.com/svg/index.html
     <text x="470" y="205">Php</text>
     <text x="470" y="235">Ruby</text>
 </svg>
+---
+
+
+# Ejercicio
+
+```svg
+<circle cx="210" cy="210" r="210" class="no-stroke js" />
+<circle cx="210" cy="210" r="50"  class="no-stroke php" />
+<circle cx="210" cy="210" r="10"  class="no-stroke ruby" />
+
+<rect x="440" y="155" width="25" height="25" class="no-stroke js" />
+<rect x="440" y="185" width="25" height="25" class="no-stroke php" />
+<rect x="440" y="215" width="25" height="25" class="no-stroke ruby" />
+
+<text x="470" y="175">Javascript</text>
+<text x="470" y="205">Php</text>
+<text x="470" y="235">Ruby</text>
 ```
+
 <svg height="600" width="600">
     <circle cx="210" cy="210" r="210" class="no-stroke js" />
     <circle cx="210" cy="210" r="50"  class="no-stroke php" />
@@ -399,22 +415,17 @@ http://tutorials.jenkov.com/svg/index.html
 - Mantenimiento complicado
 - Posicionamiento complicado
 
+
 ---
+
 
 # `<G>`
 
 - Agrupar objetos
-- Transformaciones aplicadas al `g` son heredadas por los hijos
-- Conveniente para estilos
+- Transformaciones aplicadas, son heredadas por los hijos
+- Conveniente para aplicar estilos
 - Reciclar composiciones mediante `<use>`
 
-<svg>
-    <g fill="orange" transform="skewX(10)">
-        <rect x="0"   y="25" width="55" height="55" />
-        <rect x="80"  y="25" width="55" height="55" />
-        <rect x="160" y="25" width="55" height="55" />
-    </g>
-</svg>
 
 ---
 
