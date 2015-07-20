@@ -188,41 +188,41 @@ rect {
 # `<path>`
 
 ```html
-<path d="M10,100
-         L10,10
-         A10,10 0 0,1 10,60
+<path d="
+    M10,100
+    L10,10
+    A10,10 0 0,1 10,60
 
-         M50,100
-         L50,10
-         M80,100
-         L80,10
-         M50,60
-         L80,60
+    M50,100
+    V10
+    M80,100
+    V10
+    M50,60
+    H80
 
-         M100,100
-         L100,10
-         A10,10 0 0,1 100,60
-         "
->
+    M100,100
+    v-90
+    A10,10 0 0,1 100,60
+">
 ```
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="120">
     <path d="M10,100
              L10,10
              A10,10 0 0,1 10,60
 
              M50,100
-             L50,10
+             V10
              M80,100
-             L80,10
+             V10
              M50,60
-             L80,60
+             H80
 
              M100,100
-             L100,10
+             v-90
              A10,10 0 0,1 100,60
              "
-         stroke-width="10"         
+         stroke-width="10"
          class="no-fill stroke-php"
     >
 </svg>
