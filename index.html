@@ -303,7 +303,7 @@ rect {
 
 # Sistema de Coordenadas
 
-<svg height="480" style="position: absolute; left: 50px; top: 120px;">
+<svg height="880" style="position: absolute; left: 50px; top: 120px;">
     <defs>
         <marker id="markerArrow" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto" markerUnits="strokeWidth">
            <path d="M2,2 L2,7 L7,4.5 L2,2" stroke-width="0" stroke="none" />
@@ -432,30 +432,32 @@ svg .flecha {
 # `<G>` Un poco mejor
 
 ```svg
-<svg>
-    <g>
-        <circle cx="210" cy="210" r="210" class="js" />
-        <circle cx="210" cy="210" r="50"  class="php" />
-        <circle cx="210" cy="210" r="10"  class="ruby" />
+<g transform="translate(210,210)" class="no-stroke">
+    <circle r="210" class="js" />
+    <circle r="50"  class="php" />
+    <circle r="10"  class="ruby" />
+</g>
+<g transform="translate(440)">
+    <g class="no-stroke">
+        <rect y="155" width="25" height="25" class="js" />
+        <rect y="185" width="25" height="25" class="php" />
+        <rect y="215" width="25" height="25" class="ruby" />
     </g>
-    <g transform="translate(440)">
-        <g>
-            <rect y="155" width="25" height="25" class="js" />
-            <rect y="185" width="25" height="25" class="php" />
-            <rect y="215" width="25" height="25" class="ruby" />
-        </g>
-        <g transform="translate(40)">
-            <text y="175">Javascript</text>
-            <text y="205">Php</text>
-            <text y="235">Ruby</text>
-        </g>
+    <g transform="translate(40)">
+        <text y="175">Javascript</text>
+        <text y="205">Php</text>
+        <text y="235">Ruby</text>
     </g>
-</svg>
+</g>
 ```
+
+<!--svg height="450" width="400"></svg-->
 
 ???
 - transform
 - segundo "transform" es relativo al primero
+- cx y cy omitidos xq default=0
+- class puestos al <g>
 
 ---
 
