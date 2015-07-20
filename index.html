@@ -259,6 +259,31 @@ rect {
 
 ---
 
+# Transformaciones
+
+```svg
+<defs>
+   <rect id="rect" x="0" y="0" height="60" width="60" class="php" />
+</defs>
+<use x="0"   y="50" xlink:href="#rect" />
+<use x="100" y="50" xlink:href="#rect" transform="rotate(30, 130, 80)" />
+<use x="200" y="50" xlink:href="#rect" transform="scale(2)" />
+<use x="300" y="50" xlink:href="#rect" transform="skewX(10)" />
+<use x="400" y="50" xlink:href="#rect" transform="translate(0,-15)" />
+```
+
+<svg height="250">
+    <defs>
+       <rect id="rect" x="0" y="0" height="60" width="60" class="php" />
+    </defs>
+    <use x="0"   y="50" xlink:href="#rect" />
+    <use x="100" y="50" xlink:href="#rect" transform="rotate(30, 130, 80)" />
+    <use x="200" y="50" xlink:href="#rect" transform="scale(2)" />
+    <use x="300" y="50" xlink:href="#rect" transform="skewX(10)" />
+    <use x="400" y="50" xlink:href="#rect" transform="translate(0,-15)" />
+</svg>
+
+---
 ---
 
 # Sistema de Coordenadas
