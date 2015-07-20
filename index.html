@@ -155,7 +155,27 @@ rect {
     />
 </svg>
 
+
 ---
+
+
+# Texto
+
+```svg
+<text
+    x="20" y="60"
+    class="stroke-php js"
+    style="font-size: 70; stroke-width: 2"
+>PHP Day 2015</text>
+```
+
+<svg heigth="200" width="200">
+    <text x="20" y="60" class="stroke-php js" style="font-size:70; stroke-width: 2" >PHP Day 2015</text>
+ </svg>
+
+
+---
+
 
 #`<circle><line><polyline>`
 
@@ -183,123 +203,9 @@ rect {
   <line x1="50" y1="50" x2="150" y2="150" style="stroke:blue" />
 </svg>
 
----
-
-# `<path>`
-
-```html
-<path d="
-    M10,100
-    L10,10
-    A10,10 0 0,1 10,60
-
-    M50,100
-    V10
-    M80,100
-    V10
-    M50,60
-    H80
-
-    M100,100
-    v-90
-    A10,10 0 0,1 100,60
-">
-```
-
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="120">
-    <path d="M10,100
-             L10,10
-             A10,10 0 0,1 10,60
-
-             M50,100
-             V10
-             M80,100
-             V10
-             M50,60
-             H80
-
-             M100,100
-             v-90
-             A10,10 0 0,1 100,60
-             "
-         stroke-width="10"
-         class="no-fill stroke-php"
-    >
-</svg>
-
-???
-
-- El elemento mas versatil y avanzado, pero tambien el mas dificil de usar
-- M = move
-- L = line
-- A = arc
-- H = horizontal
-- V = Vertical
-
-- minuscula = coordenadas relativas
-- mayuscula = coordenadas absolutas
 
 ---
 
-# `<path>`
-
-```svg
-<path d="M80,80            L290,290" />
-<path d="M80,80 A1,1 0 1,1 290,290"  />
-<path d="M80,80 Q290,0     290,290"  />
-```
-
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="300" width="300">
-    <g class="no-fill">
-        <path d="M80,80            L290,290" class="stroke-php" />
-        <path d="M80,80 A1,1 0 1,1 290,290"  class="stroke-js" />
-        <path d="M80,80 Q290,0     290,290"  class="stroke-ruby" />
-    </g>
-</svg>
-
----
-
-# Transformaciones
-
-```svg
-<defs>
-   <rect id="rect" x="0" y="0" height="60" width="60" class="php" />
-</defs>
-<use x="0"   y="50" xlink:href="#rect" />
-<use x="100" y="50" xlink:href="#rect" transform="rotate(30, 130, 80)" />
-<use x="200" y="50" xlink:href="#rect" transform="scale(2)" />
-<use x="300" y="50" xlink:href="#rect" transform="skewX(10)" />
-<use x="400" y="50" xlink:href="#rect" transform="translate(0,-15)" />
-```
-
-<svg height="250">
-    <defs>
-       <rect id="rect" x="0" y="0" height="60" width="60" class="php" />
-    </defs>
-    <use x="0"   y="50" xlink:href="#rect" />
-    <use x="100" y="50" xlink:href="#rect" transform="rotate(30, 130, 80)" />
-    <use x="200" y="50" xlink:href="#rect" transform="scale(2)" />
-    <use x="300" y="50" xlink:href="#rect" transform="skewX(10)" />
-    <use x="400" y="50" xlink:href="#rect" transform="translate(0,-15)" />
-</svg>
-
----
-
-# Texto
-
-```svg
-<text
-    x="20" y="60"
-    class="stroke-php js"
-    style="font-size: 70; stroke-width: 2"
->PHP Day 2015</text>
-```
-
-<svg heigth="200" width="200">
-    <text x="20" y="60" class="stroke-php js" style="font-size:70; stroke-width: 2" >PHP Day 2015</text>
- </svg>
-
----
 
 # Sistema de Coordenadas
 
@@ -411,9 +317,81 @@ svg .flecha {
 </svg>
 
 ???
-- Coordenadas y Clases repetidas
-- Mantenimiento complicado
+PROBLEMAS
+- Clases CSS repetidas
+- Posicionamiento repetido
 - Posicionamiento complicado
+- Mantenimiento complicado
+- Geometria repetida
+
+
+---
+
+
+# `<defs>`, `<use>`
+
+```svg
+<defs>
+    <rect id="square" x="40" width="25" height="25" class="no-stroke" />
+</defs>
+
+<use xlink:href="#square" y="55"  class="js"   />
+<use xlink:href="#square" y="85"  class="php"  />
+<use xlink:href="#square" y="115" class="ruby" />
+
+<text x="70" y="75">Javascript</text>
+<text x="70" y="105">Php</text>
+<text x="70" y="135">Ruby</text>
+```
+
+<svg height="200" width="600">
+    <defs>
+        <rect id="square" x="40" width="25" height="25" class="no-stroke" />
+    </defs>
+
+    <use xlink:href="#square" y="55"  class="js"   />
+    <use xlink:href="#square" y="85"  class="php"  />
+    <use xlink:href="#square" y="115" class="ruby" />
+
+    <text x="70" y="75">Javascript</text>
+    <text x="70" y="105">Php</text>
+    <text x="70" y="135">Ruby</text>
+</svg>
+
+
+???
+- muestro solo lo que cambio
+- no se ahorra mucho codigo porque la estructura es chica y simple (luego viene <g>)
+- igualmente se ahorra performance
+
+
+---
+
+
+# Transformaciones
+
+```svg
+<defs>
+   <rect id="rect" y="50" height="60" width="60" class="php" />
+</defs>
+
+<use x="0"   xlink:href="#rect"                                 />
+<use x="100" xlink:href="#rect" transform="rotate(30, 130, 80)" />
+<use x="200" xlink:href="#rect" transform="scale(2)"            />
+<use x="300" xlink:href="#rect" transform="skewX(10)"           />
+<use x="400" xlink:href="#rect" transform="translate(0,-15)"    />
+```
+
+<svg height="250">
+    <defs>
+       <rect id="rect" y="50" height="60" width="60" class="php" />
+    </defs>
+    <use x="0"   xlink:href="#rect" />
+    <use x="100" xlink:href="#rect" transform="rotate(30, 130, 80)" />
+    <use x="200" xlink:href="#rect" transform="scale(2)" />
+    <use x="300" xlink:href="#rect" transform="skewX(10)" />
+    <use x="400" xlink:href="#rect" transform="translate(0,-15)" />
+</svg>
 
 
 ---
@@ -430,7 +408,7 @@ svg .flecha {
 ---
 
 
-# `<G>` Un poco mejor
+# Un poco mejor
 
 ```svg
 <g transform="translate(210,210)" class="no-stroke">
@@ -455,10 +433,89 @@ svg .flecha {
 <!--svg height="450" width="400"></svg-->
 
 ???
-- transform
+- estructura conveniente con <g>
 - segundo "transform" es relativo al primero
-- cx y cy omitidos xq default=0
 - class puestos al <g>
+- cx y cy omitidos xq default=0
+
+
+---
+
+
+# `<path>`
+
+```html
+<path d="
+    M10,100
+    L10,10
+    A10,10 0 0,1 10,60
+
+    M50,100
+    V10
+    M80,100
+    V10
+    M50,60
+    H80
+
+    M100,100
+    v-90
+    A10,10 0 0,1 100,60
+">
+```
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="120">
+    <path d="M10,100
+             L10,10
+             A10,10 0 0,1 10,60
+
+             M50,100
+             V10
+             M80,100
+             V10
+             M50,60
+             H80
+
+             M100,100
+             v-90
+             A10,10 0 0,1 100,60
+             "
+         stroke-width="10"
+         class="no-fill stroke-php"
+    >
+</svg>
+
+???
+
+- El elemento mas versatil y avanzado, pero tambien el mas dificil de usar
+- M = move
+- L = line
+- A = arc
+- H = horizontal
+- V = Vertical
+
+- minuscula = coordenadas relativas
+- mayuscula = coordenadas absolutas
+
+
+---
+
+
+# `<path>`
+
+```svg
+<path d="M80,80            L290,290" />
+<path d="M80,80 A1,1 0 1,1 290,290"  />
+<path d="M80,80 Q290,0     290,290"  />
+```
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="300" width="300">
+    <g class="no-fill">
+        <path d="M80,80            L290,290" class="stroke-php" />
+        <path d="M80,80 A1,1 0 1,1 290,290"  class="stroke-js" />
+        <path d="M80,80 Q290,0     290,290"  class="stroke-ruby" />
+    </g>
+</svg>
+
 
 ---
 
