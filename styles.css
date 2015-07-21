@@ -100,3 +100,7 @@ svg .flecha {
 .stroke-js { stroke: #e5bb31; }
 .stroke-php { stroke: #4F5B93; }
 .stroke-ruby { stroke: #CC342D; }
+
+.full-width {
+    width: 100%;
+}
