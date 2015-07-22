@@ -20,6 +20,11 @@ img {
     width: 50%;
 }
 
+a {
+    color: #02bad1;
+    text-decoration: none;
+}
+
 blockquote {
     color: #666;
     font-size: 80%;
