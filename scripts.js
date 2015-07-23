@@ -5,6 +5,8 @@ function setupVisualizations(slideshow)
         if (slide.properties.viz)
         {
             var container = d3.select('#' + slide.properties.viz);
+
+            console.log('initializing viz selections in container %s', container.attr('id'));
             window[slide.properties.viz](container);
         }
     });
@@ -12,5 +14,10 @@ function setupVisualizations(slideshow)
 
 function vizSelections(container)
 {
-    console.log('initializing viz d3MalUsado in container %s', container.attr('id'));
+    container.select('rect').style("fill", "green");
+}
+
+function vizSelections2(container)
+{
+    container.selectAll('rect').style("fill", "green");
 }

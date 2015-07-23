@@ -12,7 +12,7 @@
 
 class: inverse, center, middle
 
-# Introducción a D3
+# Intro a D3 para los mas chambones
 Miguel Trias `<miguel@vividcortex.com>`
 
 ---
@@ -643,9 +643,65 @@ http://d3js.org/#introduction
 
 viz: vizSelections
 
-# D3 mal usado
+# Selections
 
-<div id="vizSelections"></div>
+```html
+<svg>
+    <rect id="rect" x="100" y="50" height="60" width="60" />
+</svg>
+```
+
+```javascript
+d3.select('rect').style("fill", "green");
+
+// equivalente a
+
+document.getElementById('rect').style.setProperty("fill", "green");
+```
+
+<div id="vizSelections">
+    <svg>
+        <rect id="d3_selections_rect" x="100" y="50" height="60" width="60" />
+    </svg>
+</div>
+
+
+---
+
+
+viz: vizSelections2
+
+# Selections
+
+```html
+<svg>
+    <rect x="100" y="50" height="60" width="60" />
+    <rect x="200" y="50" height="60" width="60" />
+</svg>
+```
+
+```javascript
+d3.selectAll('rect').style("fill", "green");
+
+// equivalente a
+
+document.getElementsByTagName('rect').forEach(function(rect)
+{
+    rect.style.setProperty("fill", "green");
+});
+```
+
+<div id="vizSelections2">
+    <svg>
+        <rect x="100" y="50" height="60" width="60" />
+        <rect x="200" y="50" height="60" width="60" />
+    </svg>
+</div>
+
+???
+- saved loop
+- method chaining
+- declarative
 
 
 ---
