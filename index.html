@@ -851,6 +851,74 @@ ii) transiciones
 
 ---
 
+# Data Joins (mal hechos)
+
+```javascript
+var data = [
+    {lang: 'js',   popularity: 200},
+    {lang: 'php',  popularity: 100},
+    {lang: 'ruby', popularity: 15},
+];
+```
+
+```javascript
+d3.selectAll('circle')
+    .attr("r", function (d, i)
+    {
+        return data[i].popularity;
+    })
+    .attr("class", function (d, i)
+    {
+        return data[i].lang;
+    });
+```
+
+---
+
+
+# Data Joins
+
+```javascript
+var data = [
+    {lang: 'js',   popularity: 200},
+    {lang: 'php',  popularity: 100},
+    {lang: 'ruby', popularity: 15},
+];
+```
+
+```javascript
+d3.selectAll('circle')
+    .data(data)
+    .enter().append("circle")
+        .attr("r", function (d, i)
+        {
+            return d.popularity;
+        })
+        .attr("class", function (d, i)
+        {
+            return d.lang;
+        });
+
+```
+
+<!--
+viz: vizDataJoin
+<div id="vizDataJoin" class="viz-container">
+    <svg height="400">
+        <g transform="translate(210,210)" class="no-stroke"></g>
+    </svg>
+</div>
+-->
+
+???
+- callbacks reciben el datum
+- append y selection no siempre tienen lo mismo
+
+---
+
+# Enter-Update-Exit `(mindblown)`
+
+---
 
 class: inverse, center, middle
 

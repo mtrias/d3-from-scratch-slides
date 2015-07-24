@@ -74,3 +74,27 @@ function vizSelectionsPractice(selection)
             return ['php', 'js', 'ruby'][i] + ' transparent';
         });
 }
+
+function vizDataJoin(selection)
+{
+    var data = [
+        {lang: 'js',   popularity: 200},
+        {lang: 'php',  popularity: 100},
+        {lang: 'ruby', popularity: 15},
+    ];
+
+    var circles = selection.select('g').selectAll('circle').data(data);
+
+    var circleEnter = circles.enter().append("circle").attr("r", 0);
+
+    circles.transition().duration(DURATION)
+        .attr("r", function (d, i)
+        {
+            return d.popularity;
+        })
+        .attr("class", function (d, i)
+        {
+            return d.lang;
+        });
+
+}
