@@ -1,4 +1,4 @@
-var DURATION = 4000;
+var DURATION = 3000;
 
 function setupVisualizations(slideshow)
 {
@@ -58,5 +58,7 @@ function vizSelections3(selection)
         .transition().duration(DURATION)
         .attr("width", "100")
         .transition().duration(DURATION)
-        .style("fill", "green");
+        .style("fill", "gray")
+        .transition().duration(DURATION)
+        .style("stroke", "indigo").style("stroke-width", 15);
 }
