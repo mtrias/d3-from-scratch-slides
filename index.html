@@ -967,21 +967,59 @@ d3.selectAll('circle')
 </div>
 
 
+---
+
+
+# Enter-Update-Exit `(mindblown)`
+
+
+---
+
+viz: vizEUE1
+# Enter-Update-Exit
+
+```html
+<svg></svg>
+```
+
+```javascript
+var data = [200, 100, 15];
+```
+
+```javascript
+d3.selectAll("circle")
+    .data(data)
+    .enter().append("circle")
+        .attr("r", function (d)
+        {
+            return d;
+        });
+```
+
+<div id="vizEUE1" class="viz-container">
     <svg height="400">
         <g transform="translate(210,210)" class="no-stroke"></g>
     </svg>
 </div>
--->
+
 
 ???
+- ya no creamos los elementos
 - callbacks reciben el datum
 - append y selection no siempre tienen lo mismo
 
----
-
-# Enter-Update-Exit `(mindblown)`
 
 ---
+
+
+# Enter-Update-Exit
+
+???
+- resolvimos la entrada de nuevos nodos, faltan U y E
+- data retorna la misma seleccion, pero enter retorna otra
+
+---
+
 
 class: inverse, center, middle
 

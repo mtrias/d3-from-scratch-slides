@@ -75,7 +75,29 @@ function vizSelectionsPractice(selection)
         });
 }
 
-function vizDataJoin(selection)
+function vizDataJoin1(selection)
+{
+    var data = [200, 100, 15];
+
+    var circles = selection.select('g').selectAll('circle').data(data);
+
+    var circleEnter = circles.enter().append("circle").attr("r", 0);
+
+    circles.transition().duration(DURATION)
+        .attr("r", function (d, i)
+        {
+            return d;
+        })
+        .attr("class", function (d, i)
+        {
+            return ['js', 'php', 'ruby'][i];
+        });
+
+}
+
+vizDataJoin2 = vizDataJoin1;
+
+function vizEUE1(selection)
 {
     var data = [
         {lang: 'js',   popularity: 200},
