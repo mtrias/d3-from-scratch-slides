@@ -1021,6 +1021,25 @@ d3.selectAll("circle")
 ---
 
 
+# Scales
+
+```
+.attr("r", function (d, i)
+{
+    return d.popularity;
+})
+```
+
+???
+- Hasta ahora mapeabamos directamente el dato al radio del circulo.
+- asumiamos popularidad <= tamanio del svg
+- no tiene sentido
+- ademas, asumiamos que siempre ibamos a usar un circulo
+
+
+---
+
+
 class: inverse, center, middle
 
 # ?
