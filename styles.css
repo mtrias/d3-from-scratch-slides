@@ -117,3 +117,7 @@ svg .flecha {
 .full-width {
     width: 100%;
 }
+
+.transparent {
+    opacity: .3;
+}

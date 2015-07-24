@@ -1,4 +1,4 @@
-var DURATION = 3000;
+var DURATION = 2000;
 
 function setupVisualizations(slideshow)
 {
@@ -61,4 +61,16 @@ function vizSelections3(selection)
         .style("fill", "gray")
         .transition().duration(DURATION)
         .style("stroke", "indigo").style("stroke-width", 15);
+}
+
+function vizSelectionsPractice(selection)
+{
+    selection.selectAll('circle')
+        .transition().duration(DURATION)
+        .attr("r", function () {
+            return Math.random() * 200;
+        })
+        .attr("class", function (d, i) {
+            return ['php', 'js', 'ruby'][i] + ' transparent';
+        });
 }

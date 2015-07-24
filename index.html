@@ -737,6 +737,101 @@ d3.selectAll('rect')
 - usamos la misma seleccion varias veces
 - hasta ahora es lo mismo q jQuery
 
+
+---
+
+# Selections
+
+- Callbacks to define properties
+- index in second position
+
+---
+
+# Ejercicio
+
+```svg
+<circle>
+<circle>
+<circle>
+```
+
+<div>
+    <svg height="450">
+    <g transform="translate(210,210)" class="no-stroke">
+        <circle r="210" class="js" />
+        <circle r="50"  class="php" />
+        <circle r="10"  class="ruby" />
+    </g>
+    <g transform="translate(440)">
+        <g class="no-stroke">
+            <rect y="155" width="25" height="25" class="js" />
+            <rect y="185" width="25" height="25" class="php" />
+            <rect y="215" width="25" height="25" class="ruby" />
+        </g>
+        <g transform="translate(40)">
+            <text y="175">Javascript</text>
+            <text y="205">Php</text>
+            <text y="235">Ruby</text>
+        </g>
+    </g>
+    </svg>
+</div>
+
+???
+- Markup del ejercicio anterior
+- incluir d3 en un <script>
+- borrar atributos de <circle>
+- asignar "r" y "fill" (o un "class") usando d3
+- se puede usar un random, o un ordinal "i"
+
+
+---
+
+
+viz: vizSelectionsPractice
+
+# Ejercicio
+
+```javascript
+d3.selectAll('circle')
+    .attr("r", function ()
+    {
+        return Math.random() * 200;
+    })
+    .attr("class", function (d, i)
+    {
+        return ['php', 'js', 'ruby'][i] + ' transparent';
+    });
+```
+
+<div id="vizSelectionsPractice" class="viz-container">
+    <svg height="450">
+    <g transform="translate(210,210)" class="no-stroke">
+        <circle r="210" class="js transparent" />
+        <circle r="50"  class="php transparent" />
+        <circle r="10"  class="ruby transparent" />
+    </g>
+    <g transform="translate(440)">
+        <g class="no-stroke">
+            <rect y="155" width="25" height="25" class="js" />
+            <rect y="185" width="25" height="25" class="php" />
+            <rect y="215" width="25" height="25" class="ruby" />
+        </g>
+        <g transform="translate(40)">
+            <text y="175">Javascript</text>
+            <text y="205">Php</text>
+            <text y="235">Ruby</text>
+        </g>
+    </g>
+    </svg>
+</div>
+
+???
+Notar:
+- transparent (para no enfrentarme al z-index)
+- estamos sobreescribiendo el "class" cada vez
+
+
 ---
 
 
