@@ -643,7 +643,7 @@ http://d3js.org/#introduction
 
 viz: vizSelections1
 
-# Selections
+# Selections > `select`
 
 ```html
 <svg>
@@ -671,7 +671,7 @@ document.getElementById('rect').style.setProperty("fill", "green");
 
 viz: vizSelections2
 
-# Selections
+# Selections > `selectAll`
 
 ```html
 <svg>
@@ -699,10 +699,42 @@ document.getElementsByTagName('rect').forEach(function(rect)
 </div>
 
 ???
-- saved loop
-- method chaining
-- declarative
+- evitamos loops
 
+
+---
+
+
+viz: vizSelections3
+
+# Selections > `selectAll`
+
+```html
+<svg>
+    <rect x="100" y="50" height="60" width="60" />
+    <rect x="200" y="50" height="60" width="60" />
+</svg>
+```
+
+```javascript
+d3.selectAll('rect')
+    .attr("height", "150")
+    .attr("width", "100")
+    .style("fill", "green");
+```
+
+<div id="vizSelections3" onclick="viz(this)" class="viz-container">
+    <svg height="250">
+        <rect x="100" y="50" height="60" width="60" />
+        <rect x="250" y="50" height="60" width="60" />
+    </svg>
+</div>
+
+???
+- interfaz fluida ( method chaining )
+- codigo conciso y declarativo
+- usamos la misma seleccion varias veces
+- hasta ahora es lo mismo q jQuery
 
 ---
 
