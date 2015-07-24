@@ -851,7 +851,72 @@ ii) transiciones
 
 ---
 
-# Data Joins (mal hechos)
+
+# Data Joins
+
+```javascript
+var data = [200, 100, 15];
+```
+
+```javascript
+d3.selectAll('circle')
+    .attr("r", function (d, i)
+    {
+        return data[i];
+    });
+```
+
+???
+- mal hecho, solo para ilustrar el concepto
+- aun no sabemos que es el parametro "d"
+
+
+---
+
+
+viz: vizDataJoin1
+
+# Data Joins
+
+
+```html
+<circle /><circle /><circle />
+```
+
+```javascript
+var data = [200, 100, 15];
+```
+
+```javascript
+d3.selectAll('circle')
+    .data(data)
+        .attr("r", function (d, i)
+        {
+            return d;
+        })
+```
+
+<div id="vizDataJoin1" class="viz-container">
+    <svg height="400">
+        <g transform="translate(210,210)" class="no-stroke">
+            <circle />
+            <circle />
+            <circle />
+        </g>
+    </svg>
+</div>
+
+???
+- ahora si ta bien
+- callbacks reciben el datum y el indice
+- pero seguimos creando el markup a mano!!
+
+
+
+---
+
+
+# Ejercicio
 
 ```javascript
 var data = [
@@ -861,20 +926,15 @@ var data = [
 ];
 ```
 
-```javascript
-d3.selectAll('circle')
-    .attr("r", function (d, i)
-    {
-        return data[i].popularity;
-    })
-    .attr("class", function (d, i)
-    {
-        return data[i].lang;
-    });
-```
+???
+- estructura de datos mas completa
+- completar para usar las "class" usando un callback
+
 
 ---
 
+
+viz: vizDataJoin2
 
 # Data Joins
 
@@ -889,7 +949,6 @@ var data = [
 ```javascript
 d3.selectAll('circle')
     .data(data)
-    .enter().append("circle")
         .attr("r", function (d, i)
         {
             return d.popularity;
@@ -901,9 +960,13 @@ d3.selectAll('circle')
 
 ```
 
-<!--
-viz: vizDataJoin
-<div id="vizDataJoin" class="viz-container">
+<div id="vizDataJoin2" class="viz-container">
+    <svg height="400">
+        <g transform="translate(210,210)" class="no-stroke"></g>
+    </svg>
+</div>
+
+
     <svg height="400">
         <g transform="translate(210,210)" class="no-stroke"></g>
     </svg>
