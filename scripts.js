@@ -1,23 +1,62 @@
+var DURATION = 4000;
+
 function setupVisualizations(slideshow)
 {
     slideshow.on('afterShowSlide', function (slide)
     {
         if (slide.properties.viz)
         {
-            var container = d3.select('#' + slide.properties.viz);
-
-            console.log('initializing viz selections in container %s', container.attr('id'));
-            window[slide.properties.viz](container);
+            startViz(d3.select('#' + slide.properties.viz));
         }
+    });
+
+    // start visualizations with a click
+    d3.selectAll(".viz-container").on("click", function(){
+        viz(this);
     });
 }
 
-function vizSelections(container)
+function viz(element)
 {
-    container.select('rect').style("fill", "green");
+    startViz(d3.select(element));
 }
 
-function vizSelections2(container)
+function startViz(selection)
 {
-    container.selectAll('rect').style("fill", "green");
+    var id = selection.attr("id");
+    console.log('starting viz %s', id);
+    window[id](selection);
+}
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////
+
+
+
+function vizSelections1(selection)
+{
+    selection.select('rect')
+        .transition().duration(DURATION)
+        .style("fill", "green");
+}
+
+function vizSelections2(selection)
+{
+    selection.selectAll('rect')
+        .transition().duration(DURATION)
+        .style("fill", "green");
+}
+
+function vizSelections3(selection)
+{
+    selection.selectAll('rect')
+        .transition().duration(DURATION)
+        .attr("height", "150")
+        .transition().duration(DURATION)
+        .attr("width", "100")
+        .transition().duration(DURATION)
+        .style("fill", "green");
 }
