@@ -63,6 +63,19 @@ function vizSelections3(selection)
         .style("stroke", "indigo").style("stroke-width", 15);
 }
 
+function vizSelections4(selection)
+{
+    selection.selectAll('rect')
+        .transition().duration(DURATION)
+        .attr("height", "150")
+        .transition().duration(DURATION)
+        .attr("width", 100)
+        .transition().duration(DURATION)
+        .style("fill", function (d, i) {
+            return ["gray", "orange"][i];
+        })
+}
+
 function vizSelectionsPractice(selection)
 {
     selection.selectAll('circle')
