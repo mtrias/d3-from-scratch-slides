@@ -110,6 +110,8 @@ function vizDataJoin1(selection)
 
 vizDataJoin2 = vizDataJoin1;
 
+
+
 function vizEUE1(selection)
 {
     var data = [
@@ -131,5 +133,63 @@ function vizEUE1(selection)
         {
             return d.lang;
         });
-
 }
+
+
+
+// -----------------------------------------------------------------------------
+
+var eue2Data = [
+    {lang: 'js',   popularity: 200},
+    {lang: 'php',  popularity: 100},
+];
+
+eue2Data.times = 2;
+
+function vizEUE2(selection)
+{
+
+    switch (eue2Data.times++ % 3)
+    {
+        case 0:
+            eue2Data.push({lang: 'ruby', popularity: 60});
+            break;
+
+        case 1:
+            eue2Data[1].popularity = 70 + _.random(0, 130);
+            break;
+
+        case 2:
+            eue2Data.length =  2;
+            break;
+    }
+
+    console.log(JSON.stringify(eue2Data));
+
+    var circles = selection.select('g').selectAll('circle').data(eue2Data);
+
+    circles.enter()
+        .append("circle")
+        .style("opacity", 0)
+        .attr("r", 0);
+
+    circles
+        .transition().duration(DURATION)
+        .style("opacity", 1)
+        .attr("r", function (d, i)
+        {
+            return d.popularity;
+        })
+        .attr("class", function (d, i)
+        {
+            return d.lang;
+        });
+
+    circles.exit()
+        .transition().duration(DURATION)
+        .style("opacity", 0)
+        .transition().duration(DURATION)
+        .remove();
+}
+
+// -----------------------------------------------------------------------------

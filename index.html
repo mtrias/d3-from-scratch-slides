@@ -1021,6 +1021,7 @@ class: center
 
 ---
 
+
 viz: vizEUE1
 # Enter-Update-Exit
 
@@ -1054,15 +1055,44 @@ d3.selectAll("circle")
 - callbacks reciben el datum
 - append y selection no siempre tienen lo mismo
 
+- Los datum pueden entrar, cambiar o salir
+- resolvimos la entrada, faltan U y E
+
 
 ---
 
 
+viz: vizEUE2
 # Enter-Update-Exit
 
+```javascript
+var circles = selection.selectAll('circle').data(eue2Data);
+
+circles.enter().append("circle");
+
+circles
+    .attr("r", function (d, i)
+    {
+        return d.popularity;
+    })
+    .attr("class", function (d, i)
+    {
+        return d.lang;
+    });
+
+circles.exit().remove();
+```
+
+<div id="vizEUE2" class="viz-container">
+    <svg height="400">
+        <g transform="translate(210,210)" class="no-stroke"></g>
+    </svg>
+</div>
+
 ???
-- resolvimos la entrada de nuevos nodos, faltan U y E
-- data retorna la misma seleccion, pero enter retorna otra
+- cada click ejecuta un cambio en los datos equivalente a EUE
+- data retorna la misma seleccion, pero enter/exit retornan otra
+
 
 ---
 
@@ -1078,9 +1108,11 @@ d3.selectAll("circle")
 
 ???
 - Hasta ahora mapeabamos directamente el dato al radio del circulo.
-- asumiamos popularidad <= tamanio del svg
-- no tiene sentido
-- ademas, asumiamos que siempre ibamos a usar un circulo
+- mal:
+    - asumiamos popularidad <= tamanio del svg
+    - no tiene sentido
+    - asumiamos que siempre ibamos a usar un circulo
+    - mal, porque area es πR2
 
 
 ---
