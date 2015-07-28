@@ -4,9 +4,9 @@ function setupVisualizations(slideshow)
 {
     slideshow.on('afterShowSlide', function (slide)
     {
-        if (slide.properties.viz)
+        if (slide.properties.viz && document.getElementById(slide.properties.viz))
         {
-            startViz(d3.select('#' + slide.properties.viz));
+            d3.select('#' + slide.properties.viz).call(startViz);
         }
     });
 
