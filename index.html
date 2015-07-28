@@ -322,6 +322,8 @@ svg .flecha {
     <text x="470" y="205">Php</text>
     <text x="470" y="235">Ruby</text>
 </svg>
+
+
 ---
 
 
@@ -354,6 +356,7 @@ svg .flecha {
     <text x="470" y="205">Php</text>
     <text x="470" y="235">Ruby</text>
 </svg>
+
 
 ???
 PROBLEMAS
@@ -611,11 +614,11 @@ Data-driven: linkear datos a nodos del DOM y luego aplicar transformaciones basa
 # D3
 
 - las librerias "standard" de graficos no siempre tienen la que necesitamos
-- quizas queremos inventar una, o varias
+- quizas queremos inventar una
 - o queremos que interactuen entre si
 - afinar detalladamente el comportamiento o diseño de los elementos
 - procesar los datos en el mismo lugar
-- ejecutar algoritmos caros (layouts, scaling, zooming, paning, brushing, animaciones, simulaciones fisicas, deteccion de colisiones, mapas, geoJSON, fuerzas (gravedad, cargas, etc) )
+- ejecutar algoritmos caros (layouts, scaling, zooming, paning, brushing, animaciones, deteccion de colisiones, mapas, geoJSON, simulaciones fisicas (gravedad, cargas, etc) )
 
 <footer>
 http://d3js.org/#introduction
@@ -659,7 +662,7 @@ viz: vizSelections1
 ```
 
 ```javascript
-d3.select('rect').style("fill", "green");
+d3.select('#rect').style("fill", "green");
 
 // equivalente a
 
@@ -784,6 +787,7 @@ selection.selectAll('rect')
 
 
 ---
+
 
 # Ejercicio
 
