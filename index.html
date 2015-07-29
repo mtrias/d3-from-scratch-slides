@@ -59,13 +59,13 @@ class: inverse, middle
 # Agenda
 
 1. SVG
-1. Visualizaciones "a mano"
 1. d3
 
 ???
 
 - Preguntas bienvenidas
 - Nivel Basico (HTML, CSS, Javascript)
+- Ejercicios en el medio
 
 
 ---
@@ -1056,6 +1056,10 @@ d3.selectAll("circle")
 - callbacks reciben el datum
 - append y selection no siempre tienen lo mismo
 
+- selectAll en elementos que sabemos que no existen.
+- no le decimos como crear circulos, sino que queremos
+- queremos un circulo por cada datum
+
 
 ---
 
@@ -1117,7 +1121,13 @@ circles.exit().remove();
 ???
 - cada click ejecuta un cambio en los datos equivalente a EUE
 - data retorna la misma seleccion, pero enter/exit retornan otra
+- los cambios en "update" aplican a los nodos que recien entraron por el orden
 
+- este patron sirve para cualquier situacion
+- enter para viz estaticas
+- update/exit para ver datos realtime
+- tambien permite "explorar" los datos (brush, highlight)
+- permite hacer transiciones facilmente
 
 ---
 
@@ -1164,6 +1174,9 @@ class: inverse, center, middle
         <li>Blog de Mike: http://bost.ocks.org/mike/</li>
         <li>Pruebas: http://bl.ocks.org/</li>
         <li>Tutoriales D3: https://github.com/mbostock/d3/wiki/Tutorials</li>
+        <li>Data Joins: http://bost.ocks.org/mike/join/</li>
+        <li>Object constancy: http://bost.ocks.org/mike/constancy/</li>
+        <li>Enter/update/exit: http://bl.ocks.org/mbostock/3808218</li>
     </ul>
 </footer>
 
