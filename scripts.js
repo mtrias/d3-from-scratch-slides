@@ -188,7 +188,6 @@ function vizEUE2(selection)
     circles.exit()
         .transition().duration(DURATION)
         .style("opacity", 0)
-        .transition().duration(DURATION)
         .remove();
 }
 
