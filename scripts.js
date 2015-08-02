@@ -41,6 +41,14 @@ function startViz(selection)
     window[id](selection);
 }
 
+function width(selection)
+{
+    var svg = selection.select('svg'),
+        $svg = jQuery(svg[0]);
+
+    return $svg.width();
+}
+
 
 
 
@@ -152,6 +160,7 @@ function vizEUE1(selection)
 
 // -----------------------------------------------------------------------------
 
+
 var eue2Data = [
     {lang: 'js',   popularity: 200},
     {lang: 'php',  popularity: 100},
@@ -203,19 +212,20 @@ function vizEUE2(selection)
         .remove();
 }
 
+
+// -----------------------------------------------------------------------------
+
+
 function vizAxisDemo(selection)
 {
     var svg = selection.select('svg');
-    var $svg = jQuery(svg[0]).empty();
 
     svg.append("g");
 
     var factor = 1;
 
-    var width = $svg.width();
-
     var tScale = d3.time.scale()
-        .range([0, width])
+        .range([0, width(selection)])
         .nice();
 
     var tAxis = d3.svg.axis().ticks(5).scale(tScale);
