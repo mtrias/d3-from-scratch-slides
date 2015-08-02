@@ -254,4 +254,20 @@ function vizAxisDemo(selection)
     interval = setInterval(refresh, 100);
 }
 
+
+// -----------------------------------------------------------------------------
+
+
+function vizTrans1(selection)
+{
+    var r = 80,
+        w = Math.round(width(selection) - r);
+
+    selection.select('circle').transition()
+        .ease('linear')
+        .duration(8e3)
+        .attr("r", r)
+        .attr("cx", w)
+        .attr("fill", 'yellow');
+}
 // -----------------------------------------------------------------------------
