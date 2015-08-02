@@ -1206,29 +1206,26 @@ var r = d3.scale.linear()
 ---
 
 
-# Scales
+viz: vizQuantitativeScales
+# Quantitative Scales
 
-- Quantitative
-    - Linear
-    - Power
-    - Log
-    - Quantize
-    - Quantile
-    - Threshold
-- Ordinal
-- Time
+<div id="vizQuantitativeScales" class="viz-container">
+    <svg height="400"></svg>
+</div>
 
 ???
 
-1 - Dominios continuos (numeros)
-2 - dominios discretos (nombres, categorias)
-3 - tiempo
+- aplican a Dominios continuos (numeros)
+- Otros:
+    - Quantize
+    - Quantile
+    - Threshold
 
 
 ---
 
 
-# Linear Scales
+# Quantitative Scales
 
 - .rangeRound()
 - .interpolate()
@@ -1243,6 +1240,18 @@ clamp -> enable/disable extrapolation
 nice -> extiende el dominio a valores lindos
 
 - todas tienen metodos comunes más otros especiales
+
+
+---
+
+
+# Scales
+- Ordinal
+- Time
+
+???
+
+Ordinal: dominios discretos (nombres, categorias)
 
 
 ---

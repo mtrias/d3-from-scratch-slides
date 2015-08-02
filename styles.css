@@ -121,3 +121,7 @@ svg .flecha {
 .transparent {
     opacity: .3;
 }
+
+path.domain {
+    stroke-width: 1
+}

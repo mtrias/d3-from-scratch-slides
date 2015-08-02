@@ -225,6 +225,59 @@ function vizEUE2(selection)
 // -----------------------------------------------------------------------------
 
 
+function vizQuantitativeScales(selection)
+{
+    var svg = selection.select('svg'),
+
+        types = ['linear', 'pow', 'sqrt', 'log'],
+
+        domain = [0, 100],
+
+        range = [0, width(selection)];
+
+    _(types).each(function (t, i)
+    {
+        console.log("creating %s scale", t);
+
+        var axis
+
+            g = svg.append("g"),
+
+            scale = d3.scale[t]().range(range);
+
+        switch(t)
+        {
+            case 'pow':
+                scale.domain(domain).exponent(2);
+                break;
+
+            case 'log':
+                scale.domain([1, 10]);
+                break;
+
+            default:
+                scale.domain(domain);
+        }
+
+        axis = d3.svg.axis().scale(scale).tickSize(10, 2).tickPadding(5);
+
+        g.append('circle')
+            .attr("r", 7)
+            .attr("cy", -15)
+            .attr("class", "no-stroke php")
+            .attr("cx", scale(10));
+
+        g.append('text').attr("x", 20).attr("y", -10).text(t);
+
+        g.attr("transform", "translate(0, " + (i+1)*80 + ")").call(axis);
+
+    }).value();
+}
+
+
+// -----------------------------------------------------------------------------
+
+
 function vizAxisDemo(selection)
 {
     var svg = selection.select('svg');
@@ -244,8 +297,6 @@ function vizAxisDemo(selection)
         factor *=  1.02;
 
         offset = factor * 5 * 1e3;
-
-        console.log("refresh %s", offset);
 
         if (offset > 1e3 * 60 * 60 * 24 * 365 * 10)
         {
