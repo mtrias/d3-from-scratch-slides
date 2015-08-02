@@ -270,4 +270,49 @@ function vizTrans1(selection)
         .attr("cx", w)
         .attr("fill", 'yellow');
 }
+
+
+// -----------------------------------------------------------------------------
+
+
+function vizTrans2(selection)
+{
+    var path = selection.select('path');
+
+    var line = d3.svg.line()
+        .x(function(d) { return d.x; })
+        .y(function(d) { return d.y; })
+        .interpolate("linear");
+
+    function data()
+    {
+        var samplesize = 50;
+        return _.range(0, width(selection) / samplesize)
+            .map(function(d){ return d * samplesize; })
+            .map(function(d){ return {x: d, y: _.random(200)} });
+    }
+
+    function draw(path)
+    {
+        path.attr("d", line(data()));
+    }
+
+    function transition()
+    {
+        var t = path.transition().ease('linear').duration(DURATION * 3)
+
+        draw(t);
+    }
+
+    interval = setInterval(function ()
+    {
+        transition();
+    }, DURATION * 3);
+
+
+    draw(path);
+    transition();
+}
+
+
 // -----------------------------------------------------------------------------
