@@ -1153,6 +1153,98 @@ circles.exit().remove();
 ---
 
 
+# Scales
+
+<blockquote>
+    Scales are functions that map from an input domain to an output range.
+</blockquote>
+
+<img src="d3scale.png" />
+
+
+---
+
+
+# Scales
+
+```javascript
+var max = d3.max(data, function (d)
+{
+    return d.popularity;
+})
+
+var r = d3.scale.linear()
+    .domain([0, max])
+    .range([0, width / 4])
+```
+
+```javascript
+.attr("r", function (d, i)
+{
+    return r(d.popularity);
+})
+```
+
+
+---
+
+
+# Scales
+
+- Quantitative
+- Ordinal
+- Time
+
+???
+
+1 - Dominios continuos (numeros)
+2 - dominios discretos (nombres, categorias, colores)
+3 - tiempo
+
+
+---
+
+
+# Scales
+
+- Quantitative
+    - Linear
+    - Power
+    - Log
+    - Quantize
+    - Quantile
+    - Threshold
+- Ordinal
+- Time
+
+???
+
+1 - Dominios continuos (numeros)
+2 - dominios discretos (nombres, categorias)
+3 - tiempo
+
+
+---
+
+
+# Linear Scales
+
+- .rangeRound()
+- .interpolate()
+- .clamp()
+- .nice()
+
+
+???
+rangeRound -> redondear a enteros
+interpolate -> interpolacion personalizada
+clamp -> enable/disable extrapolation
+nice -> extiende el dominio a valores lindos
+
+- todas tienen metodos comunes más otros especiales
+
+
+---
 class: inverse, center, middle
 
 # ?
