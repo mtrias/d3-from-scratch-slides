@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="d3.js"></script>
     <script src="lodash.js"></script>
+    <script src="jquery-2.1.4.js"></script>
     <script src="scripts.js"></script>
   </head>
   <body>
@@ -1245,6 +1246,50 @@ nice -> extiende el dominio a valores lindos
 
 
 ---
+
+
+viz: vizAxisDemo
+# Axis
+
+```javascript
+
+svg.append("g");
+
+var scale = d3.time.scale()
+        .domain([
+            Date.now() - offset,
+            Date.now()
+        ])
+        .range([0, width])
+        .nice();
+
+var axis = d3.svg.axis()
+        .ticks(5)
+        .scale(scale);
+
+svg.call(axis);
+```
+
+<div id="vizAxisDemo" class="viz-container">
+    <svg height="100"></svg>
+</div>
+    
+
+---
+
+
+# Transitions
+
+
+---
+
+
+# Force Layout
+
+
+---
+
+
 class: inverse, center, middle
 
 # ?

@@ -1,17 +1,30 @@
 var DURATION = 2000;
 
+var interval;
+
+function cleanup()
+{
+    // Cancel any interval started by a previous slide
+    clearInterval(interval);
+}
+
 function setupVisualizations(slideshow)
 {
     slideshow.on('afterShowSlide', function (slide)
     {
+        cleanup();
+
         if (slide.properties.viz && document.getElementById(slide.properties.viz))
         {
             d3.select('#' + slide.properties.viz).call(startViz);
         }
     });
 
-    // start visualizations with a click
-    d3.selectAll(".viz-container").on("click", function(){
+    // start visualizations with a click in the container
+    d3.selectAll(".viz-container").on("click", function()
+    {
+        cleanup();
+
         viz(this);
     });
 }
@@ -148,7 +161,6 @@ eue2Data.times = 2;
 
 function vizEUE2(selection)
 {
-
     switch (eue2Data.times++ % 3)
     {
         case 0:
@@ -189,6 +201,47 @@ function vizEUE2(selection)
         .transition().duration(DURATION)
         .style("opacity", 0)
         .remove();
+}
+
+function vizAxisDemo(selection)
+{
+    var svg = selection.select('svg');
+    var $svg = jQuery(svg[0]).empty();
+
+    svg.append("g");
+
+    var factor = 1;
+
+    var width = $svg.width();
+
+    var tScale = d3.time.scale()
+        .range([0, width])
+        .nice();
+
+    var tAxis = d3.svg.axis().ticks(5).scale(tScale);
+
+    function refresh()
+    {
+        factor *=  1.02;
+
+        offset = factor * 5 * 1e3;
+
+        console.log("refresh %s", offset);
+
+        if (offset > 1e3 * 60 * 60 * 24 * 365 * 10)
+        {
+            cleanup();
+        }
+
+        tScale.domain([
+            Date.now() - offset,
+            Date.now()
+        ]);
+
+        svg.transition().call(tAxis);
+    }
+
+    interval = setInterval(refresh, 100);
 }
 
 // -----------------------------------------------------------------------------
