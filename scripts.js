@@ -239,7 +239,7 @@ function vizAxisDemo(selection)
 
     var tAxis = d3.svg.axis().ticks(5).scale(tScale);
 
-    function refresh()
+    interval = setInterval(function refresh()
     {
         factor *=  1.02;
 
@@ -258,9 +258,7 @@ function vizAxisDemo(selection)
         ]);
 
         svg.transition().call(tAxis);
-    }
-
-    interval = setInterval(refresh, 100);
+    }, 100);
 }
 
 
@@ -313,14 +311,8 @@ function vizTrans2(selection)
         draw(t);
     }
 
-    interval = setInterval(function ()
-    {
-        transition();
-    }, DURATION * 3);
-
-
     draw(path);
-    transition();
+    startInterval(transition, DURATION * 3);
 }
 
 
