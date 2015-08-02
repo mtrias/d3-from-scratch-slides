@@ -49,6 +49,12 @@ function width(selection)
     return $svg.width();
 }
 
+function startInterval(cb, duration)
+{
+    interval = setInterval(cb, duration || DURATION);
+
+    cb();
+}
 
 
 
@@ -99,14 +105,17 @@ function vizSelections4(selection)
 
 function vizSelectionsPractice(selection)
 {
-    selection.selectAll('circle')
-        .transition().duration(DURATION)
-        .attr("r", function () {
-            return Math.random() * 200;
-        })
-        .attr("class", function (d, i) {
-            return ['php', 'js', 'ruby'][i] + ' transparent';
-        });
+    startInterval(function ()
+    {
+        selection.selectAll('circle')
+            .transition().duration(DURATION)
+            .attr("r", function () {
+                return Math.random() * 200;
+            })
+            .attr("class", function (d, i) {
+                return ['php', 'js', 'ruby'][i] + ' transparent';
+            });
+    });
 }
 
 function vizDataJoin1(selection)
