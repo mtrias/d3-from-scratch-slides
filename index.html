@@ -763,7 +763,7 @@ viz: vizSelections4
 ```
 
 ```javascript
-selection.selectAll('rect')
+d3.selectAll('rect')
     .attr("height", "150")
     .attr("width", function () {
         return 100;
@@ -1095,7 +1095,7 @@ viz: vizEUE2
 # Enter-Update-Exit
 
 ```javascript
-var circles = selection.selectAll('circle').data(eue2Data);
+var circles = d3.selectAll('circle').data(eue2Data);
 
 circles.enter().append("circle");
 
@@ -1134,7 +1134,7 @@ circles.exit().remove();
 
 # Scales
 
-```
+```javascript
 .attr("r", function (d, i)
 {
     return d.popularity;
