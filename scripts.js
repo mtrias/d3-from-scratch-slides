@@ -280,33 +280,28 @@ function vizQuantitativeScales(selection)
 
 function vizAxisDemo(selection)
 {
-    var svg = selection.select('svg');
+    var now = Date.now(),
 
-    svg.append("g");
+        svg = selection.select('svg'),
 
-    var factor = 1;
+        offset = 30 * 1e3,
 
-    var tScale = d3.time.scale()
-        .range([0, width(selection)])
-        .nice();
+        tScale = d3.time.scale()
+            .range([0, width(selection)])
+            .nice(),
 
-    var tAxis = d3.svg.axis().ticks(5).scale(tScale);
+        tAxis = d3.svg.axis().ticks(5).scale(tScale);
 
-    interval = setInterval(function refresh()
+    startInterval(function refresh()
     {
-        factor *=  1.02;
+        offset *= 1.02;
 
-        offset = factor * 5 * 1e3;
-
-        if (offset > 1e3 * 60 * 60 * 24 * 365 * 10)
+        if (offset > 1e3 * 60 * 60 * 24 * 365 * 20)
         {
             cleanup();
         }
 
-        tScale.domain([
-            Date.now() - offset,
-            Date.now()
-        ]);
+        tScale.domain([now - offset, now]);
 
         svg.transition().call(tAxis);
     }, 100);
