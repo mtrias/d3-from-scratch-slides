@@ -267,9 +267,9 @@ function vizQuantitativeScales(selection)
             .attr("class", "no-stroke php")
             .attr("cx", scale(10));
 
-        g.append('text').attr("x", 20).attr("y", -10).text(t);
+        g.append('text').attr("x", 100).attr("y", -10).text(t);
 
-        g.attr("transform", "translate(0, " + (i+1)*80 + ")").call(axis);
+        g.attr("transform", "translate(0, " + (i * 100 + 40) + ")").call(axis);
 
     }).value();
 }
