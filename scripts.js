@@ -43,6 +43,8 @@ function startViz(selection)
 
 function width(selection)
 {
+    if (!selection){ throw 'selection argument is required'; }
+
     var svg = selection.select('svg'),
         $svg = jQuery(svg[0]);
 
@@ -261,17 +263,62 @@ function vizQuantitativeScales(selection)
 
         axis = d3.svg.axis().scale(scale).tickSize(10, 2).tickPadding(5);
 
+        g.attr("transform", "translate(0, " + (i * 100 + 40) + ")").call(axis);
+
         g.append('circle')
             .attr("r", 7)
-            .attr("cy", -15)
             .attr("class", "no-stroke php")
             .attr("cx", scale(10));
 
-        g.append('text').attr("x", 100).attr("y", -10).text(t);
+        g.append('text').attr("x", 2).attr("y", -10).text(t);
 
-        g.attr("transform", "translate(0, " + (i * 100 + 40) + ")").call(axis);
 
     }).value();
+}
+
+function vizQuantitativeScales2(selection)
+{
+    function scale()
+    {
+        return d3.scale.linear()
+            .domain([0.012, 0.90000000001])
+            .range(range)
+    }
+
+    var range = [0, width(selection) * 0.7],
+
+        svg = selection.select('svg'),
+
+        scales = {
+            '': scale(),
+            nice:  scale(),
+            roundRange: scale(),
+            clamp: scale(),
+        },
+
+        i = 0,
+
+        container = svg.append("g").attr("transform", "translate(50, 0)");
+
+    scales.nice.nice();
+    scales.roundRange.nice().rangeRound(range);
+    scales.clamp.nice().rangeRound(range).clamp(true);
+
+    _.each(scales, function (scale, k)
+    {
+        var g = container.append("g"),
+
+            axis = d3.svg.axis().scale(scale).tickSize(10, 2).tickPadding(5).ticks(6);
+
+        g.selectAll('circle').data([0.478, 1.1]).enter().append('circle')
+            .attr("r", 7)
+            .attr("class", "no-stroke php")
+            .attr("cx", scale);
+
+        g.append('text').attr("x", 0).attr("y", -10).text(k);
+
+        g.attr("transform", "translate(0, " + (i++ * 100 + 40) + ")").call(axis);
+    });
 }
 
 

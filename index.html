@@ -1216,7 +1216,7 @@ viz: vizQuantitativeScales
 ???
 
 - aplican a Dominios continuos (numeros)
-- Otros:
+- Hay otras para dominios discretos:
     - Quantize
     - Quantile
     - Threshold
@@ -1225,18 +1225,16 @@ viz: vizQuantitativeScales
 ---
 
 
+viz: vizQuantitativeScales2
 # Quantitative Scales
 
-- .rangeRound()
-- .interpolate()
-- .clamp()
-- .nice()
-
+<div id="vizQuantitativeScales2" class="viz-container">
+    <svg height="450"></svg>
+</div>
 
 ???
-rangeRound -> redondear a enteros
-interpolate -> interpolacion personalizada
-clamp -> enable/disable extrapolation
+rangeRound -> redondear a enteros (antialiasing)
+clamp -> des/habilitar extrapolation
 nice -> extiende el dominio a valores lindos
 
 - todas tienen metodos comunes más otros especiales
