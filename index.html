@@ -30,9 +30,9 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
 
-# Faults
+class: center, middle
+# Faults Detection
 
 <img src="./vc-faults.png" style="width:65%"/>
 
@@ -40,6 +40,7 @@ class: inverse, center, middle
 ---
 
 
+class: center, middle
 # Throughput
 
 <img src="./vc-bubbles.png" class="full-width" />
@@ -48,6 +49,7 @@ class: inverse, center, middle
 ---
 
 
+class: center, middle
 # Top Queries
 
 <img src="./vc-queries.png" class="full-width" />
@@ -72,7 +74,7 @@ class: inverse, middle
 
 - Preguntas bienvenidas
 - Nivel Basico (HTML, CSS, Javascript)
-- Ejercicios en el medio
+- Ingles
 
 
 ---
@@ -98,6 +100,8 @@ Scalable Vector Graphics
 <footer>
     https://en.wikipedia.org/wiki/Scalable_Vector_Graphics
 </footer>
+
+
 
 ---
 
@@ -150,9 +154,9 @@ Maneras de embeber: inline <svg>, <img>, <embed>
 
 ???
 - contenido esta dentro de HTML
+- `<svg>` es asumido en las proximas diapos
 - xmlns & version (ver pie)
 - version 2.0 en working draft
-- `<svg>` es asumido en las proximas diapos
 
 
 ---
@@ -315,27 +319,7 @@ svg .flecha {
 ---
 
 
-# Ejercicio
-
-<svg height="470" width="600">
-    <circle cx="210" cy="210" r="210" class="no-stroke js" />
-    <circle cx="210" cy="210" r="50"  class="no-stroke php" />
-    <circle cx="210" cy="210" r="10"  class="no-stroke ruby" />
-
-    <rect x="440" y="155" width="25" height="25" class="no-stroke js" />
-    <rect x="440" y="185" width="25" height="25" class="no-stroke php" />
-    <rect x="440" y="215" width="25" height="25" class="no-stroke ruby" />
-
-    <text x="470" y="175">Javascript</text>
-    <text x="470" y="205">Php</text>
-    <text x="470" y="235">Ruby</text>
-</svg>
-
-
----
-
-
-# Ejercicio
+# Ejemplo
 
 ```html
 <circle cx="210" cy="210" r="210" class="no-stroke js" />
@@ -372,7 +356,7 @@ PROBLEMAS
 - Posicionamiento repetido
 - Posicionamiento complicado
 - Mantenimiento complicado
-- Geometria repetida
+- Geometria repetida (cuadraditos iguales, cx y cy iguales)
 
 
 ---
@@ -402,17 +386,13 @@ PROBLEMAS
     <use xlink:href="#square" y="55"  class="js"   />
     <use xlink:href="#square" y="85"  class="php"  />
     <use xlink:href="#square" y="115" class="ruby" />
-
-    <text x="70" y="75">Javascript</text>
-    <text x="70" y="105">Php</text>
-    <text x="70" y="135">Ruby</text>
 </svg>
 
 
 ???
 - muestro solo lo que cambio
-- no se ahorra mucho codigo porque la estructura es chica y simple (luego viene <g>)
-- igualmente se ahorra performance
+- no se ahorra mucho codigo porque la estructura es chica y simple (luego viene `<g>`)
+- el objetivo es mejorar la performance
 
 
 ---
@@ -425,11 +405,11 @@ PROBLEMAS
    <rect id="rect" y="50" height="60" width="60" class="php" />
 </defs>
 
-<use x="0"   xlink:href="#rect"                                 />
-<use x="100" xlink:href="#rect" transform="rotate(30, 130, 80)" />
-<use x="200" xlink:href="#rect" transform="scale(2)"            />
-<use x="300" xlink:href="#rect" transform="skewX(10)"           />
-<use x="400" xlink:href="#rect" transform="translate(0,-15)"    />
+<use x="0"                                   xlink:href="#rect" />
+<use x="100" transform="rotate(30, 130, 80)" xlink:href="#rect" />
+<use x="200" transform="scale(2)"            xlink:href="#rect" />
+<use x="300" transform="skewX(10)"           xlink:href="#rect" />
+<use x="400" transform="translate(0,-15)"    xlink:href="#rect" />
 ```
 
 <svg height="250">
@@ -483,10 +463,11 @@ PROBLEMAS
 <!--svg height="450" width="400"></svg-->
 
 ???
-- estructura conveniente con <g>
-- segundo "transform" es relativo al primero
-- class puestos al <g>
+- estructura conveniente con `<g>`
 - cx y cy omitidos xq default=0
+- segundo "transform" es relativo al primero
+- class puestos al `<g>`
+
 
 
 ---
@@ -572,7 +553,7 @@ PROBLEMAS
 
 class: inverse, center, middle
 
-<img src="hate.png" />
+<img src="hate.png" style="width:60%" />
 
 
 ---
@@ -797,52 +778,9 @@ d3.selectAll('rect')
 ---
 
 
-# Ejercicio
-
-```html
-<circle>
-<circle>
-<circle>
-```
-
-<div>
-    <svg height="280">
-        <g transform="translate(210,140)" class="no-stroke">
-            <circle r="130" class="js" />
-            <circle r="50"  class="php" />
-            <circle r="15"  class="ruby" />
-        </g>
-        <g transform="translate(440)">
-            <g class="no-stroke">
-                <rect y="100" width="25" height="25" class="js" />
-                <rect y="130" width="25" height="25" class="php" />
-                <rect y="160" width="25" height="25" class="ruby" />
-            </g>
-            <g transform="translate(40)">
-                <text y="120">Javascript</text>
-                <text y="150">Php</text>
-                <text y="180">Ruby</text>
-            </g>
-        </g>
-    </svg>
-</div>
-
-
-???
-- Markup del ejercicio anterior
-- incluir d3 en un <script>
-- TODO: facilitar un codepen!!!
-- borrar atributos de <circle>
-- asignar "r" y "fill" (o un "class") usando d3
-- se puede usar un random, o un ordinal "i"
-
-
----
-
-
 viz: vizSelectionsPractice
 
-# Ejercicio
+# Ejemplo
 
 ```javascript
 d3.selectAll('circle')
@@ -880,6 +818,8 @@ d3.selectAll('circle')
 
 ???
 Notar:
+- Markup igual al ejemplo anterior
+- solo eliminamos los atributos de los `<circle>`
 - transparent (para no enfrentarme al z-index)
 - estamos sobreescribiendo el "class" cada vez
 
@@ -895,9 +835,8 @@ Notar:
 2. cantidades -> propiedades
 
 ???
-Notar: tambien importa el cambio:
-i) data joins (comprende enter/update/exit)
-ii) formas, colores, dimensiones, posiciones, transiciones
+- 1: incluyendo los cambios: enter/update/exit
+- 2: formas, colores, dimensiones, posiciones, transiciones
 
 
 ---
@@ -918,8 +857,8 @@ d3.selectAll('circle')
 ```
 
 ???
-- mal hecho, solo para ilustrar el concepto
-- aun no sabemos que es el parametro "d"
+- mal hecho, solo para ilustrar la necesidad
+- aun no llamamos a data()
 
 
 ---
@@ -963,31 +902,12 @@ d3.selectAll('circle')
 - pero seguimos creando el markup a mano!!
 
 
-
----
-
-
-# Ejercicio
-
-```javascript
-var data = [
-    {lang: 'js',   popularity: 200},
-    {lang: 'php',  popularity: 100},
-    {lang: 'ruby', popularity: 15},
-];
-```
-
-???
-- estructura de datos mas completa
-- completar para usar las "class" usando un callback
-
-
 ---
 
 
 viz: vizDataJoin2
 
-# Data Joins
+# Ejemplo
 
 ```javascript
 var data = [
@@ -1008,8 +928,10 @@ d3.selectAll('circle')
         {
             return d.lang;
         });
-
 ```
+
+???
+- estructura de datos del mundo real
 
 <!--div id="vizDataJoin2" class="viz-container">
     <svg height="400">
@@ -1031,14 +953,10 @@ class: center
 
 
 viz: vizEUE1
-# Enter-Update-Exit
+# Enter
 
 ```html
 <svg></svg>
-```
-
-```javascript
-var data = [200, 100, 15];
 ```
 
 ```javascript
@@ -1047,7 +965,7 @@ d3.selectAll("circle")
     .enter().append("circle")
         .attr("r", function (d)
         {
-            return d;
+            return d.popularity;
         });
 ```
 
@@ -1060,13 +978,12 @@ d3.selectAll("circle")
 
 ???
 - ya no creamos los elementos
-- callbacks reciben el datum
-- append y selection no siempre tienen lo mismo
 
 - selectAll en elementos que sabemos que no existen.
 - no le decimos como crear circulos, sino que queremos
 - queremos un circulo por cada datum
 
+- append y selection no siempre tienen lo mismo
 
 ---
 
@@ -1102,7 +1019,7 @@ viz: vizEUE2
 # Enter-Update-Exit
 
 ```javascript
-var circles = d3.selectAll('circle').data(eue2Data);
+var circles = d3.selectAll('circle').data(data);
 
 circles.enter().append("circle");
 
@@ -1152,7 +1069,6 @@ circles.exit().remove();
 - Hasta ahora mapeabamos directamente el dato al radio del circulo.
 - mal:
     - asumiamos popularidad <= tamanio del svg
-    - no tiene sentido
     - asumiamos que siempre ibamos a usar un circulo
     - mal, porque area es πR2
 
@@ -1175,7 +1091,7 @@ circles.exit().remove();
 ---
 
 
-# Scales
+# Ejemplo
 
 ```javascript
 var max = d3.max(data, function (d)
@@ -1195,6 +1111,9 @@ var r = d3.scale.linear()
 })
 ```
 
+???
+- d3.max
+-
 
 ---
 
@@ -1207,9 +1126,9 @@ var r = d3.scale.linear()
 
 ???
 
-1 - Dominios continuos (numeros)
-2 - dominios discretos (nombres, categorias, colores)
-3 - tiempo
+- 1: Dominios continuos (numeros)
+- 2: dominios discretos (nombres, categorias, colores)
+- 3: tiempo
 
 
 ---
@@ -1225,7 +1144,8 @@ viz: vizQuantitativeScales
 ???
 
 - aplican a Dominios continuos (numeros)
-- Hay otras para dominios discretos:
+- las que se muestran tienen rangos continuos
+- Hay otras para rangos discretos:
     - Quantize
     - Quantile
     - Threshold
@@ -1242,9 +1162,10 @@ viz: vizQuantitativeScales2
 </div>
 
 ???
-rangeRound -> redondear a enteros (antialiasing)
-clamp -> des/habilitar extrapolation
-nice -> extiende el dominio a valores lindos
+- nice -> extiende el dominio a valores lindos
+- rangeRound -> redondear a enteros (antialiasing)
+- clamp -> des/habilitar extrapolation
+
 
 
 ---
@@ -1289,7 +1210,7 @@ image credits: http://chrisgibbs.me/how-to-make-a-bar-graph-in-powerpoint/
 
 ???
 
-Ordinal: dominios discretos (nombres, categorias)
+dominios discretos (nombres, categorias)
 
 
 ---
@@ -1299,9 +1220,6 @@ viz: vizAxisDemo
 # Axis
 
 ```javascript
-
-svg.append("g");
-
 var scale = d3.time.scale()
         .domain([
             Date.now() - offset,
