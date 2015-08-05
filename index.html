@@ -66,7 +66,7 @@ class: inverse, middle
     - Enter Update Exit
     - Scales
     - Axis
-    - Transitions    
+    - Transitions
 
 ???
 
@@ -1166,8 +1166,11 @@ circles.exit().remove();
     Scales are functions that map from an input domain to an output range.
 </blockquote>
 
-<img src="d3scale.png" />
+<img src="d3scale.png" class="full-width" />
 
+???
+- son opcionales. pero mejoran el codigo
+- mapean datos a representacion visual
 
 ---
 
@@ -1249,7 +1252,21 @@ nice -> extiende el dominio a valores lindos
 
 # Quantize Scales
 
-(bubbles)
+```javascript
+var scale = d3.scale.quantize()
+    .domain([-1, 1])
+    .range([
+        '#2C679B', '#5884A1', '#7DA6C1', // frio
+        '#959595',                       // neutral
+        '#CCC061', '#D99B29', '#E65C28'  // caliente
+    ]);
+```
+
+<img src="bubbles.png" style="width: 40%" />
+
+???
+- Es otro tipo de escalas cuantitativas
+- Dominio continuo, Rango discreto
 
 
 ---
@@ -1257,8 +1274,18 @@ nice -> extiende el dominio a valores lindos
 
 # Ordinal Scales
 
-(faults)
+```javascript
+var scale = d3.scale.ordinal()
+    .domain(['disk', 'mysql'])
+    .rangeRoundBands([0, 100]);
+```
 
+<img src="faults.png" style="width: 30%" />
+<img src="bars.png" style="width: 59%; float: right; margin-top: 10px;" />
+
+<footer>
+image credits: http://chrisgibbs.me/how-to-make-a-bar-graph-in-powerpoint/
+</footer>
 
 ???
 
