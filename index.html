@@ -168,7 +168,7 @@ class: middle, center
 
 # `<rect>`
 
-```svg
+```html
 <rect
     x="25"
     y="25"
@@ -208,7 +208,7 @@ rect {
 
 # Texto
 
-```svg
+```html
 <text
     x="20" y="60"
     class="stroke-php js"
@@ -295,7 +295,7 @@ svg .flecha {
 
 # No hay z-index
 
-```svg
+```html
 <circle cx="100" cy="150" r="95" fill="orange" />
 <circle cx="200" cy="150" r="95" fill="indigo" />
 
@@ -337,7 +337,7 @@ svg .flecha {
 
 # Ejercicio
 
-```svg
+```html
 <circle cx="210" cy="210" r="210" class="no-stroke js" />
 <circle cx="210" cy="210" r="50"  class="no-stroke php" />
 <circle cx="210" cy="210" r="10"  class="no-stroke ruby" />
@@ -380,7 +380,7 @@ PROBLEMAS
 
 # `<defs>`, `<use>`
 
-```svg
+```html
 <defs>
     <rect id="square" x="40" width="25" height="25" class="no-stroke" />
 </defs>
@@ -420,7 +420,7 @@ PROBLEMAS
 
 # Transformaciones
 
-```svg
+```html
 <defs>
    <rect id="rect" y="50" height="60" width="60" class="php" />
 </defs>
@@ -460,7 +460,7 @@ PROBLEMAS
 
 # Un poco mejor
 
-```svg
+```html
 <g transform="translate(210,210)" class="no-stroke">
     <circle r="210" class="js" />
     <circle r="50"  class="php" />
@@ -552,7 +552,7 @@ PROBLEMAS
 
 # `<path>`
 
-```svg
+```html
 <path d="M80,80            L290,290" />
 <path d="M80,80 A1,1 0 1,1 290,290"  />
 <path d="M80,80 Q290,0     290,290"  />
@@ -799,7 +799,7 @@ d3.selectAll('rect')
 
 # Ejercicio
 
-```svg
+```html
 <circle>
 <circle>
 <circle>
@@ -1439,7 +1439,10 @@ class: inverse, center, middle
             navigation: {
                 // Enable or disable navigating using scroll
                 scroll: false,
-            }
+            },
+
+            //highlightStyle: 'ascetic'
+            highlightStyle: 'github'
         });
         setupVisualizations(slideshow);
     </script>
