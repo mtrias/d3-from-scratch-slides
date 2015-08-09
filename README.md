@@ -2,4 +2,4 @@
 
 Slides of my _Introduction to D3_ talk
 
-Based on gnab/remark. Just open the index.html file to see the slides.
+Based on https://github.com/gnab/remark/. Just open the index.html file to see the slides.
