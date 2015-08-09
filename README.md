@@ -1,2 +1,5 @@
 # d3-intro
-Intro to D3 Presentation
+
+Slides of my _Introduction to D3_ talk
+
+Based on gnab/remark. Just open the index.html file to see the slides.
