@@ -2,6 +2,8 @@
 
 Slides of my _Introduction to D3_ talk
 
-Based on [Remark](https://github.com/gnab/remark/). Just open the index.html file to see the slides.
+This slides are Based on [Remark](https://github.com/gnab/remark/). Just checkout and open the [index.html](index.html) file to see them in your browser.
 
+--
 
+http://2015.phpday.uy/
